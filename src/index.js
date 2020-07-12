@@ -9,6 +9,10 @@ const dbName = process.env.DB_NAME;
 const mongoUser = process.env.DB_USER;
 const mongoPassword = process.env.DB_PW;    
 
+const userRouter = require('./routes/userRoutes.js');
+
+app.use('/user', userRouter);
+
 app.use(express.json());
 
 (async () => {
@@ -28,8 +32,6 @@ app.use(express.json());
     }
 })()
 
-// mongodb+srv://mongoigti:<password>@igti-bootcamp-model-4.hpr7d.mongodb.net/<dbname>?retryWrites=true&w=majority
-
 app.listen(APP_PORT, () => {
     console.log(`Application started on port ${APP_PORT}`)
-})
+});
