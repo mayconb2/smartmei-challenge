@@ -6,7 +6,7 @@ const { getUser, createUser} = userController;
 
 const app = express();
 
-router.get('/', getUser);
+router.get('/:id', getUser);
 
 router.post('/', createUser)
 
