@@ -4,20 +4,20 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     id: {
         type: Number,
-        required: true,
-
     },
     name: {
         type: String,
         required: true,
         minlength: 1,
         maxlength: 255,
+        required: true,
     },
     email: {
         type: String,
         required: true,
         minlength: 1,
-        maxlength: 255
+        maxlength: 255,
+        required: true,
     },
     created_at: {
         type: Date,

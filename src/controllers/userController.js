@@ -4,8 +4,13 @@ const getUser = async (req, res) => {
     try {
         const {id} = req.params;
 
-        const user = await userModel.find({id: id}, {'_id': 0});
-        res.status(200).send(user)
+        //todo = verificar se exite id
+
+        const user = await (await userModel.findOne({id: id}, {'_id': 0, 'myCollection._id': 0}));
+
+        const {name, email, created_at, myCollection, lent_books, borrowed_books } = user;
+
+        res.status(200).send({id, name, email, created_at, myCollection, lent_books, borrowed_books})
 
     } catch (error) {
 
@@ -19,16 +24,17 @@ const createUser = async (req, res) => {
 
         const {name, email} = req.body;
 
-        let user = new userModel({
+        const user = new userModel({
             name,
             email,
-            id: 2022,
-            created_at: new Date()
+            id: 2023,
         });
 
-        await user.save()
-        
-        res.send({name, email})
+        await user.save();
+    
+        const { id, created_at, myCollection, lent_books, borrowed_books } = user;
+
+        res.status(201).send({id, name, email, created_at, myCollection, lent_books, borrowed_books })
 
     } catch (error) {
         

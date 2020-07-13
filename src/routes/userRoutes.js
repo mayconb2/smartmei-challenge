@@ -8,6 +8,6 @@ const app = express();
 
 router.get('/:id', getUser);
 
-router.post('/', createUser)
+router.post('/', createUser);
 
 module.exports = router
