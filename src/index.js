@@ -11,9 +11,9 @@ const mongoPassword = process.env.DB_PW;
 
 const userRouter = require('./routes/userRoutes.js');
 
+app.use(express.json());
 app.use('/user', userRouter);
 
-app.use(express.json());
 
 (async () => {
     try {

@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const userController = require('./../controllers/userController.js');
 
+const { getUser, createUser} = userController;
+
 const app = express();
 
-app.use(express.json());
+router.get('/', getUser);
 
-router.get('/', userController.getUser);
+router.post('/', createUser)
 
 module.exports = router
